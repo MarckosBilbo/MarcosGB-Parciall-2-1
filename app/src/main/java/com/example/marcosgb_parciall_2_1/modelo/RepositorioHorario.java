@@ -19,7 +19,7 @@ public class RepositorioHorario {
     private String userId;
 
     public RepositorioHorario(Application application) {
-        FirebaseDatabase database = FirebaseDatabase.getInstance("https://marcosgb-parcial-2-1-deb16-default-rtdb.europe-west1.firebasedatabase.app/");
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://marcosgb-parciall-2-1-39581-default-rtdb.europe-west1.firebasedatabase.app/");
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid(); // Obtén el ID del usuario autenticado
         databaseReference = database.getReference("usuarios").child(userId).child("horarios");
         horarios = new MutableLiveData<>();
