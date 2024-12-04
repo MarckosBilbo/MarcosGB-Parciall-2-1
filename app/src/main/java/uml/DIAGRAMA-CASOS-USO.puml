@@ -1,0 +1,25 @@
+@startuml
+actor Usuario as U
+actor Firebase
+
+package "Sistema" {
+    usecase "Registrar Usuario" as CU1
+    usecase "Iniciar Sesión" as CU2
+    usecase "Cerrar Sesión" as CU3
+    usecase "Añadir Clase" as CU4
+    usecase "Ver Horario" as CU5
+    usecase "Consultar Clase Actual" as CU6
+    usecase "Sincronizar Datos" as CU7
+}
+
+U --> CU1
+U --> CU2
+U --> CU3
+U --> CU4
+U --> CU5
+U --> CU6
+
+CU1 --> Firebase : "Crear usuario"
+CU2 --> Firebase : "Validar credenciales"
+CU7 --> Firebase : "Sincronizar horarios"
+@enduml
