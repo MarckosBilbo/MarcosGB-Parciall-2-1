@@ -1,0 +1,56 @@
+@startuml
+package "com.example.marcosgb_parcial_2_1" {
+    class ClaseHorario {
+        - id: String
+        - asignatura: String
+        - dia: String
+        - hora: String
+        + ClaseHorario(asignatura: String, dia: String, hora: String)
+        + getId(): String
+        + setId(id: String)
+    }
+
+    class RepositorioHorario {
+        - databaseReference: DatabaseReference
+        - horarios: MutableLiveData<List<ClaseHorario>>
+        + fetchHorarios()
+        + agregarClase(clase: ClaseHorario)
+        + eliminarClase(clase: ClaseHorario)
+    }
+
+    class VistaModeloHorario {
+        - repositorio: RepositorioHorario
+        + obtenerHorarios(): LiveData<List<ClaseHorario>>
+        + agregarClase(clase: ClaseHorario)
+        + eliminarClase(clase: ClaseHorario)
+    }
+
+    class ConnectivityWorker {
+        + doWork(): Result
+    }
+
+    class MainActivity {
+        + onCreate()
+        + scheduleConnectivityWorker()
+    }
+
+    ClaseHorario --> RepositorioHorario : "Usa"
+    RepositorioHorario --> VistaModeloHorario : "Usa"
+    MainActivity --> ConnectivityWorker : "Configura"
+    MainActivity --> VistaModeloHorario : "Usa"
+}
+
+package "com.example.marcosgb_parcial_2_1.vista" {
+    class PantallaLogin
+    class PantallaRegistro
+    class MenuPrincipal
+    class PantallaAgregarClase
+    class PantallaVerHorario
+    class PantallaClaseActual
+
+    MainActivity --> MenuPrincipal
+    MenuPrincipal --> PantallaAgregarClase
+    MenuPrincipal --> PantallaVerHorario
+    MenuPrincipal --> PantallaClaseActual
+}
+@enduml
