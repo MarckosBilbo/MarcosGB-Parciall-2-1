@@ -42,7 +42,7 @@ La aplicación está integrada con **Firebase Authentication** y **Firebase Real
 ---
 
 ## Estructura del Proyecto
-```plaintext
+
 com.example.marcosgb_parcial_2_1
  ├── modelo
  │     ├── ClaseHorario
